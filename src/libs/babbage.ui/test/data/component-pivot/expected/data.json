@@ -1,0 +1,23 @@
+{
+  "data": [
+    {
+      "Administrative_classification-Admin1": "National Social Insurance Company",
+      "Other-Exp_type": "289",
+      "value": 100
+    },
+    {
+      "Administrative_classification-Admin1": "National Health Insurance Company",
+      "Other-Exp_type": "322",
+      "value": 150
+    },
+    {
+      "Administrative_classification-Admin1": "General actions",
+      "Other-Exp_type": "200",
+      "value": 50
+    }
+  ],
+  "rows": [ "Other-Exp_type" ],
+  "cols": [
+    "Administrative_classification-Admin1"
+  ]
+}

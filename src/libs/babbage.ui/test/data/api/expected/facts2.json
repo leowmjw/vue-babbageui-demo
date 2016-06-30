@@ -1,0 +1,61 @@
+{
+  "headers": [
+    {
+      "key": "approved",
+      "label": "Approved",
+      "numeric": true
+    },
+    {
+      "key": "adjusted",
+      "label": "Adjusted",
+      "numeric": true
+    },
+    {
+      "key": "executed",
+      "label": "Executed",
+      "numeric": true
+    },
+    {
+      "key": "administrative_classification_admin1.admin1",
+      "label": "Admin1",
+      "numeric": false
+    }
+  ],
+  "columns": [
+    [
+      100,
+      200,
+      0,
+      "Central"
+    ],
+    [
+      10,
+      20,
+      5,
+      "Central"
+    ],
+    [
+      20,
+      0,
+      10,
+      "Central"
+    ],
+    [
+      0,
+      0,
+      0,
+      "Central"
+    ],
+    [
+      2,
+      1,
+      1,
+      "Other"
+    ]
+  ],
+  "info": {
+    "total": 190525,
+    "pageSize": 5,
+    "page": 1
+  }
+}

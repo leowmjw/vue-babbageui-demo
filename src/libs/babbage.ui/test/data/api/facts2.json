@@ -1,0 +1,48 @@
+{
+  "fields": [
+    "approved",
+    "adjusted",
+    "executed",
+    "administrative_classification_admin1.admin1"
+  ],
+  "cell": [
+  ],
+  "page": 1,
+  "status": "ok",
+  "total_fact_count": 190525,
+  "order": [
+  ],
+  "data": [
+    {
+      "executed": 0.0,
+      "administrative_classification_admin1.admin1": "Central",
+      "approved": 100,
+      "adjusted": 200
+    },
+    {
+      "executed": 5,
+      "administrative_classification_admin1.admin1": "Central",
+      "approved": 10,
+      "adjusted": 20
+    },
+    {
+      "executed": 10,
+      "administrative_classification_admin1.admin1": "Central",
+      "approved": 20,
+      "adjusted": 0
+    },
+    {
+      "executed": 0.0,
+      "administrative_classification_admin1.admin1": "Central",
+      "approved": 0,
+      "adjusted": 0
+    },
+    {
+      "executed": 1,
+      "administrative_classification_admin1.admin1": "Other",
+      "approved": 2,
+      "adjusted": 1
+    }
+  ],
+  "page_size": 5
+}

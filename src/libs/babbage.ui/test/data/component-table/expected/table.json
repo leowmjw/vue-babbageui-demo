@@ -1,0 +1,88 @@
+{
+  "headers": [
+    [ "Administrative_classification-Admin3_code", "Executed", "Adjusted", "Approved" ]
+  ],
+  "columns": [
+    {
+      "dimensions": [
+        {
+          "keyField": "administrative_classification_admin3_code.admin3_code",
+          "nameField": "administrative_classification_admin3_code.admin3_label",
+          "keyValue": "289",
+          "nameValue": "National Social Insurance Company"
+        }
+      ],
+      "measures": [
+        {
+          "key": "executed.sum",
+          "name": "Executed",
+          "value": 50
+        },
+        {
+          "key": "adjusted.sum",
+          "name": "Adjusted",
+          "value": 100
+        },
+        {
+          "key": "approved.sum",
+          "name": "Approved",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "dimensions": [
+        {
+          "keyField": "administrative_classification_admin3_code.admin3_code",
+          "nameField": "administrative_classification_admin3_code.admin3_label",
+          "keyValue": "322",
+          "nameValue": "National Health Insurance Company"
+        }
+      ],
+      "measures": [
+        {
+          "key": "executed.sum",
+          "name": "Executed",
+          "value": 100
+        },
+        {
+          "key": "adjusted.sum",
+          "name": "Adjusted",
+          "value": 100
+        },
+        {
+          "key": "approved.sum",
+          "name": "Approved",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "dimensions": [
+        {
+          "keyField": "administrative_classification_admin3_code.admin3_code",
+          "nameField": "administrative_classification_admin3_code.admin3_label",
+          "keyValue": "200",
+          "nameValue": "General actions"
+        }
+      ],
+      "measures": [
+        {
+          "key": "executed.sum",
+          "name": "Executed",
+          "value": 0
+        },
+        {
+          "key": "adjusted.sum",
+          "name": "Adjusted",
+          "value": 50
+        },
+        {
+          "key": "approved.sum",
+          "name": "Approved",
+          "value": 50
+        }
+      ]
+    }
+  ]
+}

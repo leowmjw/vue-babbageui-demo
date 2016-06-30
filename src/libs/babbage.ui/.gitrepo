@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/leowmjw/babbage.ui.git
+	branch = feature/modern
+	commit = d7c79314e26863017b66ab8e1dc5725411922b23
+	parent = 95ba3fbd1bf9bd0345e2321e747e7ff8be5b933e
+	cmdver = 0.3.0

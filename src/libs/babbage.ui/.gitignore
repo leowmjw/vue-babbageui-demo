@@ -1,0 +1,12 @@
+_site/
+.sass-cache/
+node_modules/*
+bower_components/*
+.env
+.idea
+.tern-port
+npm-debug.log
+# A browser distribution is built in `dist` when pushing to npm.
+dist
+# Code transpiled to ES5 is built in `lib` when pushing to npm.
+lib

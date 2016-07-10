@@ -263,6 +263,9 @@
         watch: {},
         events: {},
         ready () {
+            // Setup API to "pull" the available Packages; tie them to the Ministries?
+
+            // packageid must be unique??
         },
         methods: {},
         computed: {}

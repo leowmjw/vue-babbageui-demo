@@ -241,33 +241,77 @@
         </babbage_package>
     </div>
 
+    <div>
+        <ul>
+            <li v-for="budget of budgets">
+                <input type="checkbox"
+                       value="{{ budget.label ? budget.label : budget.title }}"
+                       @change="changeInCheckBox"/>
+            </li>
+        </ul>
+        <div v-for="cube of chosen_packages">
+            Put BabbagePackage {{ cube }} here!!
+        </div>
+    </div>
+
 </template>
 
 <script>
 
+    // Debug ..
+    import util from 'util'
+    // Supporting libs
+    import FixtureRepo from './BabbageUI/Model'
+
+    // Actual subcomponents
     import BabbagePackage from './BabbageUI/BabbagePackage.vue'
 
     export default {
-        props: [],
+        props: ['search_term'],
         components: {
             babbage_package: BabbagePackage
         },
         data () {
             return {
+                repo: null,
                 cube: "0638aadc448427e8b617257ad01cd38a:kpkt-propose-2016-hierarchy-test",
                 viewerUrl: "http://next.openspending.org/viewer",
                 apiUrl: "http://next.openspending.org/api/3",
-                packageid: "kpkt"
+                packageid: "kpkt",
+                budgets: null,
+                chosen_packages: []
             }
         },
-        watch: {},
+        watch: {
+            'search_term': function (val, old_val) {
+                console.error("VAL: %s OLD: %s", val, old_val)
+            }
+        },
         events: {},
         ready () {
             // Setup API to "pull" the available Packages; tie them to the Ministries?
-
+            this.initRepo()
             // packageid must be unique??
         },
-        methods: {},
+        methods: {
+            initRepo: function () {
+                this.repo = FixtureRepo("FifthCabinetNajibRazak")
+            },
+            getAvailablePackagesByName: function (search_name) {
+                // use Fixture Repo .. to query needed information
+                // use GraphQL like statement?
+                this.repo.query({action: "packages", find: search_name})
+            },
+            changeInCheckBox: function (element) {
+
+                console.error("CHANGE: ", util.inspect(element, {depth: 10}))
+                // If select; push into the array of chosen_packages
+
+                // If deselect then slice out the item from the array
+
+                // Just use the simple scan across array; will not be a lot ...
+            }
+        },
         computed: {}
     }
 

@@ -45,9 +45,17 @@ const repoFixture = stampit
                 }.bind(this))
 
             } else if (command.action == "ministers") {
-                return this.repoObj.getMinistries().map(function (e, f) {
-                    return e.members
-                }.bind(this))
+                return this.repoObj.getMinistries()
+                    .filter(function (a, b) {
+                        if (a.name == command.find) {
+                            // this.log("MATCHED: ", a.name, command.find)
+                            return true
+                        }
+                        return false
+                    }.bind(this))
+                    .map(function (e, f) {
+                        return e.members
+                    }.bind(this))
 
             }
             else if (command.action == "packages") {

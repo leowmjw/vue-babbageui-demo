@@ -242,11 +242,31 @@
     </div>
 
     <div>
+        <select v-model="chosen_ministry" @change="chooseMinistryToShow">
+            <option value="" selected="selected">Choose Ministry</option>
+            <option v-for=""></option>
+
+            <option value="health">Health</option>
+            <option value="childsafety">Child Safety</option>
+            <option value="cycling">Cycling</option>
+            <option value="oku">Orang Kurang Upaya Issues</option>
+        </select>
+
+        <h3>About {{ chosen_ministry }}</h3>
+        <related_ministires_info
+                :chosen_ministry="chosen_ministry"
+                :repo="repo"
+        >
+        </related_ministires_info>
+    </div>
+
+    <div>
+        <h3>Available Budgets</h3>
         <ul>
             <li v-for="budget of budgets">
                 <input type="checkbox"
-                       value="{{ budget.label ? budget.label : budget.title }}"
-                       @change="changeInCheckBox"/>
+                       value="{{ budget.cube }}"
+                       @change="changeInCheckBox"/>{{ budget.label ? budget.label : budget.title }}
             </li>
         </ul>
         <div v-for="cube of chosen_packages">
@@ -265,11 +285,13 @@
 
     // Actual subcomponents
     import BabbagePackage from './BabbageUI/BabbagePackage.vue'
+    import RelatedMinistriesInfo from './RelatedMinistriesInfo.vue'
 
     export default {
         props: ['search_term'],
         components: {
-            babbage_package: BabbagePackage
+            babbage_package: BabbagePackage,
+            related_ministires_info: RelatedMinistriesInfo
         },
         data () {
             return {
@@ -278,6 +300,9 @@
                 viewerUrl: "http://next.openspending.org/viewer",
                 apiUrl: "http://next.openspending.org/api/3",
                 packageid: "kpkt",
+                ministries: null,
+                chosen_ministry: null,
+                ministers: null,
                 budgets: null,
                 chosen_packages: []
             }
@@ -297,10 +322,18 @@
             initRepo: function () {
                 this.repo = FixtureRepo("FifthCabinetNajibRazak")
             },
+            chooseMinistryToShow: function () {
+                // Need to reset chosen_packes???
+                this.getAvailablePackagesByName(this.chosen_ministry)
+                // How to reset Babbage?? Needed or is it responsive??
+            },
+            getMinistries: function () {
+                this.ministries = this.repo.query({action: "ministries"})
+            },
             getAvailablePackagesByName: function (search_name) {
                 // use Fixture Repo .. to query needed information
                 // use GraphQL like statement?
-                this.repo.query({action: "packages", find: search_name})
+                this.budgets = this.repo.query({action: "packages", find: search_name})
             },
             changeInCheckBox: function (element) {
 

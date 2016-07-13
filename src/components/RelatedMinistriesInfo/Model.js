@@ -4,5 +4,8 @@
 "use strict"
 
 export default {
-
+    getPostDetails: function(popit_id) {
+        // Use superagent to get the needed data .. from PopIt API
+        // Use stampit to stub out?? maybe ..
+    }
 }

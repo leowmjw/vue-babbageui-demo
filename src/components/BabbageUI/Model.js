@@ -48,7 +48,7 @@ const repoFixture = stampit
                 return this.repoObj.getMinistries()
                     .filter(function (a, b) {
                         if (a.name == command.find) {
-                            // this.log("MATCHED: ", a.name, command.find)
+                            this.log("MATCHED: ", a.name, command.find)
                             return true
                         }
                         return false

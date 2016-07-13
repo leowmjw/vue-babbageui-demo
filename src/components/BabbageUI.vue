@@ -224,6 +224,7 @@
 
 <template>
 
+    <!--
     <div>
         <h4>
             Analyze more at:
@@ -240,39 +241,46 @@
                 type="drilldown">
         </babbage_package>
     </div>
+    -->
 
     <div>
-        <select v-model="chosen_ministry" @change="chooseMinistryToShow">
+        <select v-model="chosen_ministry" @change="chooseMinistryToShow()">
             <option value="" selected="selected">Choose Ministry</option>
-            <option v-for=""></option>
-
-            <option value="health">Health</option>
-            <option value="childsafety">Child Safety</option>
-            <option value="cycling">Cycling</option>
-            <option value="oku">Orang Kurang Upaya Issues</option>
+            <option v-for="ministry of ministries"
+                    value="{{ ministry }}">
+                {{ ministry }}
+            </option>
         </select>
 
+        <div>
+            <h3>Available Budgets</h3>
+            <ul v-for="budget of budgets">
+                <li>
+                    <input
+                            v-model="chosen_packages"
+                            type="checkbox"
+                            value="{{ budget.cube }}"
+                            @change="changeInCheckBox"/>
+                    <label>{{ budget.label ? budget.label : budget.title }}</label>
+                </li>
+            </ul>
+            <div v-for="cube of chosen_packages">
+                Put BabbagePackage {{ cube }} here!!
+            </div>
+        </div>
+
+    </div>
+
+    <div>
         <h3>About {{ chosen_ministry }}</h3>
+        <!-- Hard coded for now to iron out the problems -->
         <related_ministires_info
-                :chosen_ministry="chosen_ministry"
+                chosen_ministry="Ministry of Education"
                 :repo="repo"
         >
         </related_ministires_info>
     </div>
 
-    <div>
-        <h3>Available Budgets</h3>
-        <ul>
-            <li v-for="budget of budgets">
-                <input type="checkbox"
-                       value="{{ budget.cube }}"
-                       @change="changeInCheckBox"/>{{ budget.label ? budget.label : budget.title }}
-            </li>
-        </ul>
-        <div v-for="cube of chosen_packages">
-            Put BabbagePackage {{ cube }} here!!
-        </div>
-    </div>
 
 </template>
 
@@ -317,32 +325,44 @@
             // Setup API to "pull" the available Packages; tie them to the Ministries?
             this.initRepo()
             // packageid must be unique??
+            // Fill up all the MInsitries
+            this.refreshMinistriesList()
         },
         methods: {
             initRepo: function () {
-                this.repo = FixtureRepo("FifthCabinetNajibRazak")
+                this.repo = FixtureRepo(Object.create({}), "FifthCabinetNajibRazak")
             },
             chooseMinistryToShow: function () {
                 // Need to reset chosen_packes???
-                this.getAvailablePackagesByName(this.chosen_ministry)
+                // Possibly head off and not execute below if chosen_minstry is empty??
+                this.refreshAvailablePackages(this.chosen_ministry)
                 // How to reset Babbage?? Needed or is it responsive??
             },
-            getMinistries: function () {
+            refreshMinistriesList: function () {
                 this.ministries = this.repo.query({action: "ministries"})
+                // DEBUG:
+                // console.error("REFRESH_MINISTRIES:", util.inspect(this.ministries, {depth: 10}))
             },
-            getAvailablePackagesByName: function (search_name) {
+            refreshAvailablePackages: function (chosen_ministry) {
                 // use Fixture Repo .. to query needed information
                 // use GraphQL like statement?
-                this.budgets = this.repo.query({action: "packages", find: search_name})
+                // SHould we want to check if the return value had anything?? hmm..
+                this.budgets = this.repo.query({action: "packages", find: chosen_ministry})
+                // DEBUG:
+                console.error("REFRESH_BUDGETS:", util.inspect(this.budgets, {depth: 10}))
             },
-            changeInCheckBox: function (element) {
+            changeInCheckBox: function (element, x) {
 
-                console.error("CHANGE: ", util.inspect(element, {depth: 10}))
+                // console.error("CHANGE: ", util.inspect(element, {depth: 10}))
                 // If select; push into the array of chosen_packages
+                // console.error("X: ", util.inspect(x, {depth: 10}))
 
                 // If deselect then slice out the item from the array
 
                 // Just use the simple scan across array; will not be a lot ...
+
+                // What is the state to add a selected??
+                console.error("CHOSEN:", util.inspect(this.chosen_packages, {depth: 10}))
             }
         },
         computed: {}

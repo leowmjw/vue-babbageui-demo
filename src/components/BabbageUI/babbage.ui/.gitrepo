@@ -6,6 +6,6 @@
 [subrepo]
 	remote = https://github.com/leowmjw/babbage.ui.git
 	branch = feature/modern
-	commit = b3febba6adaef0d016b8cf906c9f37ede57b34c0
-	parent = 11fa9270ad01947e10b87097b49317897fc2009c
+	commit = eb21724ecb70100065127af3e48573b987e3fa94
+	parent = 221c7679acc8c7ceb8d70b46c67ec4b6fdd95af6
 	cmdver = 0.3.0

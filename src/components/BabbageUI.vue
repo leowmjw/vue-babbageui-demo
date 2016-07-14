@@ -224,47 +224,146 @@
 
 <template>
 
+    <!-- SHOW CHOOSE MINISTRY -->
     <div>
+        <select v-model="chosen_ministry" @change="chooseMinistryToShow()">
+            <option value="" selected="selected">Choose Ministry</option>
+            <option v-for="ministry of ministries"
+                    value="{{ ministry }}">
+                {{ ministry }}
+            </option>
+        </select>
+
+        <div v-if="budgets.length > 0">
+            <h3>Available Budgets</h3>
+            <ul v-for="budget of budgets">
+                <li>
+                    <input
+                            v-model="chosen_packages"
+                            type="checkbox"
+                            value="{{ budget.cube }}"
+                            @change="changeInCheckBox"/>
+                    <label>{{ budget.label ? budget.label : budget.title }}</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- END CHOOSE MINISTRY -->
+
+    <!-- SHOW MINISTRY DETAILS -->
+    <div v-show="chosen_ministry">
+        <h3>About {{ chosen_ministry }}</h3>
+        <!-- Hard coded for now to iron out the problems -->
+        <related_ministires_info
+                :chosen_ministry="chosen_ministry"
+                :repo="repo"
+        >
+        </related_ministires_info>
+    </div>
+    <!-- END MINISTRY DETAILS -->
+
+    <!-- SHOW SELECTED BUDGETS -->
+    <div class="col-md-12" v-for="cube of chosen_packages">
+        <!-- TODO: Filter only those associated with chosen_ministry e.g filter -->
         <h4>
             Analyze more at:
             <strong>
-                <a href="{{ viewerUrl }}/{{ cube }}">OSNext</a>
+                <a href="{{ viewerUrl }}/{{ cube }}" target="_blank">OSNext</a>
             </strong>
         </h4>
-        <h4><strong>Cube:</strong> {{ cube }}</h4>
-        <h4><strong>API URL:</strong> {{ apiUrl }}</h4>
+        <!-- TODO: Show/hide here .. -->
         <babbage_package
-                :packageid="packageid"
+                :packageid="cube.split(':')[1]"
                 :cube="cube"
                 :endpoint="apiUrl"
                 type="drilldown">
         </babbage_package>
     </div>
+    <!-- END SELECTED BUDGETS -->
+
 
 </template>
 
 <script>
 
+    // Debug ..
+    import util from 'util'
+    // Supporting libs
+    import FixtureRepo from './BabbageUI/Model'
+    // Actual subcomponents
     import BabbagePackage from './BabbageUI/BabbagePackage.vue'
+    import RelatedMinistriesInfo from './RelatedMinistriesInfo.vue'
 
     export default {
         props: [],
         components: {
-            babbage_package: BabbagePackage
+            babbage_package: BabbagePackage,
+            related_ministires_info: RelatedMinistriesInfo
         },
         data () {
             return {
-                cube: "0638aadc448427e8b617257ad01cd38a:kpkt-propose-2016-hierarchy-test",
+                repo: null,
                 viewerUrl: "http://next.openspending.org/viewer",
                 apiUrl: "http://next.openspending.org/api/3",
-                packageid: "kpkt"
+                ministries: null,
+                chosen_ministry: null,
+                ministers: null,
+                budgets: [],
+                chosen_packages: []
             }
         },
         watch: {},
         events: {},
         ready () {
+            // Setup API to "pull" the available Packages; tie them to the Ministries?
+            this.initRepo()
+            // packageid must be unique??
+            // Fill up all the MInsitries
+            this.refreshMinistriesList()
         },
-        methods: {},
+        methods: {
+            initRepo: function () {
+                this.repo = FixtureRepo(Object.create({}), "FifthCabinetNajibRazak")
+            },
+            chooseMinistryToShow: function () {
+                // Need to reset chosen_packes???
+                // Possibly head off and not execute below if chosen_minstry is empty??
+                this.refreshAvailablePackages(this.chosen_ministry)
+                // How to reset Babbage?? Needed or is it responsive??
+            },
+            refreshMinistriesList: function () {
+                this.ministries = this.repo.query({action: "ministries"})
+                // DEBUG:
+                // console.error("REFRESH_MINISTRIES:", util.inspect(this.ministries, {depth: 10}))
+            },
+            refreshAvailablePackages: function (chosen_ministry) {
+                // use Fixture Repo .. to query needed information
+                // use GraphQL like statement?
+                // SHould we want to check if the return value had anything?? hmm..
+                if (chosen_ministry == undefined || chosen_ministry == null || chosen_ministry == "") {
+                    // Nothing to do .. except reset budget to empty ..
+                    this.budgets = []
+                } else {
+                    this.budgets = this.repo.query({action: "packages", find: chosen_ministry})
+                    // DEBUG:
+                    // console.error("REFRESH_BUDGETS:", util.inspect(this.budgets, {depth: 10}))
+                }
+            },
+            changeInCheckBox: function (element, x) {
+
+                // console.error("CHANGE: ", util.inspect(element, {depth: 10}))
+                // If select; push into the array of chosen_packages
+                // console.error("X: ", util.inspect(x, {depth: 10}))
+
+                // If deselect then slice out the item from the array
+
+                // Just use the simple scan across array; will not be a lot ...
+
+                // What is the state to add a selected??
+                // DEBUG:
+                // console.error("CHOSEN:", util.inspect(this.chosen_packages, {depth: 10}))
+            }
+        },
         computed: {}
     }
 

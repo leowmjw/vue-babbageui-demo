@@ -17,6 +17,10 @@
         border-radius: 40%;
     }
 
+    .placeholder .mycontent {
+        text-align: center;
+    }
+
 </style>
 
 <template>
@@ -27,17 +31,20 @@
         <template v-else>
             <div class="placeholder" v-if="m.details">
                 <h3><strong>{{ m.post_name }}</strong></h3>
-                <img :src="m.details.image ? m.details.image.toString() :
+                <div class="mycontent">
+                    <img :src="m.details.image ? m.details.image.toString() :
             'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Replace_this_image_female.svg/150px-Replace_this_image_female.svg.png'"
-                     width="100" height="auto"
-                     class="img-thumbnail" alt="{{ m.details.name ? m.details.name.toString() : '' }}">
-                <h4>{{ m.details.name ? m.details.name.toString() : '' }}</h4>
-                <h5> {{ m.details.summary ? m.details.summary.toString() : '' }}</h5>
+                         width="100" height="auto"
+                         class="img-thumbnail" alt="{{ m.details.name ? m.details.name.toString() : '' }}">
+                    <h4>{{ m.details.name ? m.details.name.toString() : '' }}</h4>
+                    <h5> {{ m.details.summary ? m.details.summary.toString() : '' }}</h5>
             <span class="text-muted">
                 {{ m.details.email ? m.details.email.toString() + ' ' : '' }}
                 {{ m.details.gender ? m.details.gender.toString() + " " : ''  }}
                 {{ m.details.birth_date ? m.details.birth_date.toString() : ''  }}
             </span>
+
+                </div>
             </div>
             <div class="placeholder" v-else>No Result</div>
         </template>

@@ -55,7 +55,16 @@ const repoFixture = stampit
                     }.bind(this))
                     .map(function (e, f) {
                         return e.members
-                    }.bind(this))
+                    }.bind(this))[0]
+                // Above needs to select first item from array so we get the expected data strcuture out as per below
+                /*
+                 ACTION: ministers FIND: Prime Minister's Department
+                 MATCHED:  Prime Minister's Department Prime Minister's Department
+                 [ { post_id: '55b734577070042c250b332e',
+                 post_name: 'Deputy Minister in the Prime Minister\'s Department' },
+                 { post_id: '55b72903869c13f57048ca7e',
+                 post_name: 'Ministers in the Prime Minister\'s Department' } ]
+                 */
 
             }
             else if (command.action == "packages") {

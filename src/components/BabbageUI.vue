@@ -271,11 +271,11 @@
 
     </div>
 
-    <div>
+    <div v-show="chosen_ministry">
         <h3>About {{ chosen_ministry }}</h3>
         <!-- Hard coded for now to iron out the problems -->
         <related_ministires_info
-                chosen_ministry="Ministry of Education"
+                :chosen_ministry="chosen_ministry"
                 :repo="repo"
         >
         </related_ministires_info>
@@ -290,13 +290,12 @@
     import util from 'util'
     // Supporting libs
     import FixtureRepo from './BabbageUI/Model'
-
     // Actual subcomponents
     import BabbagePackage from './BabbageUI/BabbagePackage.vue'
     import RelatedMinistriesInfo from './RelatedMinistriesInfo.vue'
 
     export default {
-        props: ['search_term'],
+        props: [],
         components: {
             babbage_package: BabbagePackage,
             related_ministires_info: RelatedMinistriesInfo
@@ -311,15 +310,11 @@
                 ministries: null,
                 chosen_ministry: null,
                 ministers: null,
-                budgets: null,
+                budgets: [],
                 chosen_packages: []
             }
         },
-        watch: {
-            'search_term': function (val, old_val) {
-                console.error("VAL: %s OLD: %s", val, old_val)
-            }
-        },
+        watch: {},
         events: {},
         ready () {
             // Setup API to "pull" the available Packages; tie them to the Ministries?
@@ -349,7 +344,7 @@
                 // SHould we want to check if the return value had anything?? hmm..
                 this.budgets = this.repo.query({action: "packages", find: chosen_ministry})
                 // DEBUG:
-                console.error("REFRESH_BUDGETS:", util.inspect(this.budgets, {depth: 10}))
+                // console.error("REFRESH_BUDGETS:", util.inspect(this.budgets, {depth: 10}))
             },
             changeInCheckBox: function (element, x) {
 
@@ -362,7 +357,8 @@
                 // Just use the simple scan across array; will not be a lot ...
 
                 // What is the state to add a selected??
-                console.error("CHOSEN:", util.inspect(this.chosen_packages, {depth: 10}))
+                // DEBUG:
+                // console.error("CHOSEN:", util.inspect(this.chosen_packages, {depth: 10}))
             }
         },
         computed: {}

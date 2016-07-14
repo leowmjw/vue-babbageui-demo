@@ -54,7 +54,7 @@
                 // with hot-reload because the reloaded component
                 // preserves its current state and we are modifying
                 // its initial state.
-                msg: 'Demo - Try Drilldown!'
+                msg: 'Fifth Cabinet of Najib Razak'
             }
         }
     }

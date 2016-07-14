@@ -27,12 +27,10 @@ const repoFixture = stampit
             // Based on the type; simple case select for now?
             // Next time got extra can pass further modifers??
             const [ command, extra ] = opts
-            // Should still be the same later ... use this or instance??
             // DEBUG:
             // console.log("THIS:", util.inspect(this.repoObj, {depth: 10}))
-            // Try both; below does NOT work!!
-            // console.log("INSTANCE:", util.inspect(instance.repoObj, {depth: 10}))
-            this.log("ACTION: %s FIND: %s ", command.action, command.find)
+            // DEBUG:
+            // this.log("ACTION: %s FIND: %s ", command.action, command.find)
             // Below are the sample of data to be returned when selection of diff actions above
             // return this.repoObj.getMinisters()
             if (command.action == "ministries") {
@@ -48,7 +46,8 @@ const repoFixture = stampit
                 return this.repoObj.getMinistries()
                     .filter(function (a, b) {
                         if (a.name == command.find) {
-                            this.log("MATCHED: ", a.name, command.find)
+                            // DEBUG:
+                            // this.log("MATCHED: ", a.name, command.find)
                             return true
                         }
                         return false

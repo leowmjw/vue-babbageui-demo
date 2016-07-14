@@ -224,25 +224,7 @@
 
 <template>
 
-    <!--
-    <div>
-        <h4>
-            Analyze more at:
-            <strong>
-                <a href="{{ viewerUrl }}/{{ cube }}">OSNext</a>
-            </strong>
-        </h4>
-        <h4><strong>Cube:</strong> {{ cube }}</h4>
-        <h4><strong>API URL:</strong> {{ apiUrl }}</h4>
-        <babbage_package
-                :packageid="packageid"
-                :cube="cube"
-                :endpoint="apiUrl"
-                type="drilldown">
-        </babbage_package>
-    </div>
-    -->
-
+    <!-- SHOW CHOOSE MINISTRY -->
     <div>
         <select v-model="chosen_ministry" @change="chooseMinistryToShow()">
             <option value="" selected="selected">Choose Ministry</option>
@@ -252,7 +234,7 @@
             </option>
         </select>
 
-        <div>
+        <div v-if="budgets.length > 0">
             <h3>Available Budgets</h3>
             <ul v-for="budget of budgets">
                 <li>
@@ -264,13 +246,11 @@
                     <label>{{ budget.label ? budget.label : budget.title }}</label>
                 </li>
             </ul>
-            <div v-for="cube of chosen_packages">
-                Put BabbagePackage {{ cube }} here!!
-            </div>
         </div>
-
     </div>
+    <!-- END CHOOSE MINISTRY -->
 
+    <!-- SHOW MINISTRY DETAILS -->
     <div v-show="chosen_ministry">
         <h3>About {{ chosen_ministry }}</h3>
         <!-- Hard coded for now to iron out the problems -->
@@ -280,6 +260,26 @@
         >
         </related_ministires_info>
     </div>
+    <!-- END MINISTRY DETAILS -->
+
+    <!-- SHOW SELECTED BUDGETS -->
+    <div class="col-md-12" v-for="cube of chosen_packages">
+        <!-- TODO: Filter only those associated with chosen_ministry e.g filter -->
+        <h4>
+            Analyze more at:
+            <strong>
+                <a href="{{ viewerUrl }}/{{ cube }}" target="_blank">OSNext</a>
+            </strong>
+        </h4>
+        <!-- TODO: Show/hide here .. -->
+        <babbage_package
+                :packageid="cube.split(':')[1]"
+                :cube="cube"
+                :endpoint="apiUrl"
+                type="drilldown">
+        </babbage_package>
+    </div>
+    <!-- END SELECTED BUDGETS -->
 
 
 </template>
@@ -303,10 +303,8 @@
         data () {
             return {
                 repo: null,
-                cube: "0638aadc448427e8b617257ad01cd38a:kpkt-propose-2016-hierarchy-test",
                 viewerUrl: "http://next.openspending.org/viewer",
                 apiUrl: "http://next.openspending.org/api/3",
-                packageid: "kpkt",
                 ministries: null,
                 chosen_ministry: null,
                 ministers: null,
@@ -342,9 +340,14 @@
                 // use Fixture Repo .. to query needed information
                 // use GraphQL like statement?
                 // SHould we want to check if the return value had anything?? hmm..
-                this.budgets = this.repo.query({action: "packages", find: chosen_ministry})
-                // DEBUG:
-                // console.error("REFRESH_BUDGETS:", util.inspect(this.budgets, {depth: 10}))
+                if (chosen_ministry == undefined || chosen_ministry == null || chosen_ministry == "") {
+                    // Nothing to do .. except reset budget to empty ..
+                    this.budgets = []
+                } else {
+                    this.budgets = this.repo.query({action: "packages", find: chosen_ministry})
+                    // DEBUG:
+                    // console.error("REFRESH_BUDGETS:", util.inspect(this.budgets, {depth: 10}))
+                }
             },
             changeInCheckBox: function (element, x) {
 

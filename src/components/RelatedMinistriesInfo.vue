@@ -1,25 +1,46 @@
 <style scoped>
 
+    .placeholder {
+        margin-bottom: 20px;
+    }
+
+    .placeholder2 {
+        margin-top: 120px;
+    }
+
+    .placeholder h4 {
+        margin-bottom: 0;
+    }
+
+    .placeholder img {
+        display: inline-block;
+        border-radius: 40%;
+    }
+
 </style>
 
 <template>
-    <div v-for="minister of ministers">
-        <h3>{{ minister.post_name }}</h3>
-        <h4>{{ minister_details | json }}</h4>
-        <div class="placeholder" v-for="item of minister_details[minister.post_id]">
-            <img :src="item.image ? item.image.toString() :
+    <div class="col-md-6" v-for="m of ministers">
+        <template v-if="m == null || m == undefined">
+            .. Loading ...
+        </template>
+        <template v-else>
+            <div class="placeholder" v-if="m.details">
+                <h3><strong>{{ m.post_name }}</strong></h3>
+                <img :src="m.details.image ? m.details.image.toString() :
             'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Replace_this_image_female.svg/150px-Replace_this_image_female.svg.png'"
-                 width="100" height="auto"
-                 class="img-thumbnail" alt="{{ item.area.id ? item.area.id.toString() : '' }}">
-            <h4>{{ item.name ? item.name.toString() : '' }}</h4>
-            <h5> {{ item.summary ? item.summary.toString() : '' }}</h5>
+                     width="100" height="auto"
+                     class="img-thumbnail" alt="{{ m.details.name ? m.details.name.toString() : '' }}">
+                <h4>{{ m.details.name ? m.details.name.toString() : '' }}</h4>
+                <h5> {{ m.details.summary ? m.details.summary.toString() : '' }}</h5>
             <span class="text-muted">
-                {{ item.email ? item.email.toString() : '' }},
-                {{ item.gender ? item.gender.toString() : ''  }},
-                {{ item.birth_date ? item.birth_date.toString() : ''  }},
-                {{ item.contact_details ? item.contact_details | json : ''  }}
+                {{ m.details.email ? m.details.email.toString() + ' ' : '' }}
+                {{ m.details.gender ? m.details.gender.toString() + " " : ''  }}
+                {{ m.details.birth_date ? m.details.birth_date.toString() : ''  }}
             </span>
-        </div>
+            </div>
+            <div class="placeholder" v-else>No Result</div>
+        </template>
     </div>
 </template>
 
@@ -36,33 +57,18 @@
         watch: {
             'repo': function (val, old_val) {
                 // If the ministryid changes; reload the data for the details?
-                console.error("repo -> NEW: %s OLD: %s", val, old_val)
+                // console.error("repo -> NEW: %s OLD: %s", val, old_val)
                 // if wanted; can mark where when ready?? and queue actions??
             },
             'chosen_ministry': function (val, old_val) {
                 // If the ministryid changes; reload the data for the details?
-                console.error("chosen_ministry -> NEW: %s OLD: %s", val, old_val)
+                // console.error("chosen_ministry -> NEW: %s OLD: %s", val, old_val)
                 // Do nothing if null, undefiedn, empty
                 if (val == null || val == undefined || val == "") {
                     // Do nothing ...
                 } else {
                     this.refreshMinistersList()
                 }
-            },
-            'ministers': function (val, old_val) {
-                // Regenerate the details when we have the ministers changing!!
-                console.error("ministers -> NEW: %s OLD: %s", util.inspect(val, {depth: 10}), old_val)
-                // Do nothing if null, undefiedn, empty
-                if (val == null || val == undefined) {
-                    // Do nothing ...
-                } else {
-                    // console.error("CALL --> refreshMinisterDetails")
-                    this.refreshMinisterDetails()
-                }
-            },
-            'minister_details': function(val, old_val) {
-                console.error("MIN_DETAILS:", util.inspect(val, {depth: 10}), util.inspect(old_val, {depth: 10}))
-
             }
         },
         events: {},
@@ -82,25 +88,26 @@
             refreshMinistersList: function () {
                 // DEBUG:
                 // console.error("GET_MINISTERS for:", this.chosen_ministry)
-                // NOTE: Should be a better way here ... fo sorting; pulling the chief??
-                this.ministers = this.repo.query({action: "ministers", find: this.chosen_ministry}).reverse()
+                const all_ministers = this.repo.query({action: "ministers", find: this.chosen_ministry})
+                // reset
+                this.ministers = []
+                // Extract to Primary + Deputy Slot .. (reverse ror not decided by user??)
+                let enriched_ministers = all_ministers.reverse()
                 // Get Post Details
-                // Extract to Primary + Deputy Slot ..
-            },
-            refreshMinisterDetails: function () {
-                // Triggers and it puts into the daat structur minister_details
-                // Firstly; reset minister_details here first!!! so NO remnnants
-                this.minister_details = {}
-                // Shallow clone of this.ministers
-                // const all_ministers = this.ministers.slice()
-                // Go through each Minister and add the needed details as we go ..
-                this.ministers.map(function (post, index) {
+                enriched_ministers.map(function (post, index) {
+                    // DEBUG:
                     // console.error("POST", util.inspect(post.post_id, {depth: 10}))
                     const p = PopItPostRepo.getPostDetails(post.post_id)
                     p.then(
                             function (result) {
                                 // console.log("RESULT:", util.inspect(result, {depth: 10}))
-                                this.$set(this.minister_details[post.post_id], result)
+                                // HOWTO combine below into one line??
+                                // maybe `${index}.details`; try it next ..
+                                // this.ministers.$set(`${index}.details`, result)
+                                enriched_ministers[index]['details'] = result
+                                this.ministers.$set(index, enriched_ministers[index])
+                                // DEBUG:
+                                // console.log("ENRICHED:", util.inspect(this.ministers, {depth: 10}))
                             }.bind(this)
                     ).catch(
                             function (err) {
@@ -108,7 +115,6 @@
                             }
                     )
                 }.bind(this))
-
             }
         },
         computed: {}

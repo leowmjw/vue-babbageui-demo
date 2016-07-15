@@ -9,7 +9,21 @@ import FixtureRepo from './components/BabbageUI/Model'
 import PopItPostRepo from './components/RelatedMinistriesInfo/Model'
 
 // scenario_test_fixture_fifth_cabinet_najib_razak()
-scenario_test_get_post_details_from_ministry()
+// scenario_test_get_post_details_from_ministry()
+scenario_test_various_filters()
+
+function scenario_test_various_filters() {
+    const filter1 = "1.1"
+    const filter2 = '"1.2"'
+
+    let new_filter = null
+    new_filter = `abc_Level_1:${JSON.stringify(filter1)}`
+    console.log("FILTERED1:", new_filter)
+
+    new_filter = `abc_Level_1:${JSON.stringify(filter2)}`
+    console.log("FILTERED2:", new_filter)
+
+}
 
 function scenario_test_get_post_details_from_ministry() {
     /*

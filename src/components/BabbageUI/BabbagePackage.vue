@@ -204,7 +204,7 @@
                 } else {
                     // ADDD to filter: current_level : chosen_key
                     // Change the group to drillDown; that will become the new current_level
-                    let new_filter = `${this.initstate.group}:"${chosen_key}"`
+                    let new_filter = `${this.initstate.group}:${JSON.stringify(chosen_key)}`
                     // Append it into the filter array ..
                     this.initstate.filter.push(new_filter)
 

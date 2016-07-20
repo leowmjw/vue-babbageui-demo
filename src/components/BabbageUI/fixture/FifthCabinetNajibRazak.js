@@ -1532,7 +1532,15 @@ export default {
                     "post_id": "55b7527366d0d137274ebf17",
                     "post_name": "Minister of Human Resources"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Jabatan Perkhidmatan Awam 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:jpa2015"
+                }, {
+                    "title": "Bajet Jabatan Perkhidmatan Awam 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:jpa2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Works",
@@ -1607,7 +1615,27 @@ export default {
                     "post_id": "55b74b2169b3d48725952e00",
                     "post_name": "Minister of Finance"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Kewangan Perbendaharaan 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof1_2015"
+                }, {
+                    "title": "Bajet Kementerian Kewangan Perbendaharaan 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof1_2015detailed"
+                }, {
+                    "title": "Bajet Kementerian Kewangan Peruntukan Kepada Kumpulan Wang Terkanun Secara Terperinci (2015)",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof3_2015detailed"
+                }, {
+                    "title": "Bajet Kementerian Kewangan Perkhidmatan Am Perbendaharaan 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof2_2015"
+                }, {
+                    "title": "Bajet Kementerian Kewangan Perkhidmatan Am Perbendaharaan 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof2_2015detailed"
+                }]
             },
             {
                 "name": "Ministry of Home Affairs",

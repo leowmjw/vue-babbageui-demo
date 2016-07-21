@@ -1439,7 +1439,15 @@ export default {
                     "post_id": "55b759a7ed2606a46a89c500",
                     "post_name": "Minister of Education"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Pendidikan 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:moe2015"
+                }, {
+                    "title": "Bajet Kementerian Pendidikan 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:moe2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Natural Resources and Environment",
@@ -1510,7 +1518,15 @@ export default {
                     "post_id": "55b7553bcf2b56b826ef3e13",
                     "post_name": "Minister of Higher Education"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Pendidikan Tinggi 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mohe2015"
+                }, {
+                    "title": "Bajet Kementerian Pendidikan Tinggi 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mohe2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Federal Territories",
@@ -1555,6 +1571,14 @@ export default {
                     "title": "Min. Works 2015",
                     "label": "",
                     "cube": "525a389a219b4aa66f2b2b94311c76e5:min-works-2015"
+                }, {
+                    "title": "Bajet Kementerian Kerja Raya 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kkr2015"
+                }, {
+                    "title": "Bajet Kementerian Kerja Raya 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kkr2015_detailed"
                 }]
             },
             {
@@ -1650,6 +1674,14 @@ export default {
                     "title": "Min. HomeAffairs 2015",
                     "label": "",
                     "cube": "525a389a219b4aa66f2b2b94311c76e5:min-homeaffairs-2015"
+                }, {
+                    "title": "Bajet Kementerian Dalam Negeri 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kdn2015"
+                }, {
+                    "title": "Bajet Kementerian Dalam Negeri 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kdn2015_detailed"
                 }]
             },
             {
@@ -1716,7 +1748,15 @@ export default {
                     "post_id": "55b72f2469b3d48725943407",
                     "post_name": "Deputy Minister of Foreign Affairs"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Luar Negeri 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kln2015"
+                }, {
+                    "title": "Bajet Kementerian Luar Negeri 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kln2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Defense",
@@ -1765,7 +1805,15 @@ export default {
                     "post_id": "55b72a492f71d383700765a4",
                     "post_name": "Minister of Transport"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Pengangkutan 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kp2015"
+                }, {
+                    "title": "Bajet Kementerian Pengangkutan 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kp2015_detailed"
+                }]
             },
             {
                 "name": "Prime Minister's Department",

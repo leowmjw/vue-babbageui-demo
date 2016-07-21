@@ -32,6 +32,39 @@
         text-decoration: none
     }
 
+    .treemap-list .treemap-table-bar {
+        margin-top: 10px;
+        text-align: left
+    }
+
+    .treemap-list .treemap-table {
+        width: 100%;
+        color: #2a2d34
+    }
+
+    .treemap-list .treemap-table tr {
+        border-top: 1px solid #ddd;
+        line-height: 2em
+    }
+
+    .treemap-list .treemap-table tfoot tr {
+        border-top: #ddd solid 2px
+    }
+
+    .treemap-list .treemap-table th {
+        font-weight: 700
+    }
+
+    .treemap-list .treemap-table td:not(:first-child), .treemap-list .treemap-table th:not(:first-child) {
+        text-align: right;
+        padding-left: 20px
+    }
+
+    .treemap-list .treemap-table tbody tr:hover {
+        background-color: #3a99d9;
+        color: #fff
+    }
+
 </style>
 
 <template>
@@ -53,6 +86,71 @@
         -->
         <div id="treemap-{{ treemapid }}" class="treemap-chart"></div>
 
+        <div class="treemap-list">
+            <div class="treemap-table-bar">
+                <a href="#" @click="toggleTreeMapList()" v-show="treeMapTable.show">
+                    <span class="fa fa-caret-up"></span>
+                    Hide list
+                </a>
+                <a href="#" @click="toggleTreeMapList()" v-show="!treeMapTable.show">
+                    <span class="fa fa-caret-down"></span>
+                    Show list
+                </a>
+            </div>
+            <table class="treemap-table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        <a href="#" @click="invertSortTreeMapList('_name')">
+                            title
+                            <span v-show="treeMapTable.sortAttr == '_name'" class="fa"
+                                  :class="treeMapTable.sortDesc ? 'fa-caret-up' : 'fa-caret-down'"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" ng-click="invertSortTreeMapList('value')">
+                            amount
+                            <span v-show="treeMapTable.sortAttr == 'value'" class="fa"
+                                  :class="treeMapTable.sortDesc ? 'fa-caret-up' : 'fa-caret-down'"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" @click="invertSortTreeMapList('_percentage')">
+                            share
+                            <span v-show="treeMapTable.sortAttr == '_percentage'" class="fa"
+                                  :class="treeMapTable.sortDesc ? 'fa-caret-up' : 'fa-caret-down'"></span>
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--
+                     Try to figure out how to port the filter below; for now leave as is unsorted/natural sort
+                     <tr v-for="item of treeMapTable.data.children | orderBy:treeMapTable.sortAttr:treeMapTable.sortDesc"
+                -->
+                <tr v-for="item of treeMapTable.data.children"
+                    class="datarow" @click="selectTreeMapListRow(item)">
+                    <td>
+                        <!-- Figure out how to port the style; leave as plain for now ...
+                        <span class="colorbox" ng-style="{'background-color':item._color}"></span>
+                        -->
+                        <span class="colorbox"></span>
+                        {{ item._name }}
+                    </td>
+                    <td>{{ item._area_fmt_currency }}</td>
+                    <td>{{ (item._percentage * 100).toFixed(2) }}%</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td>{{ treeMapTable.data.summary_fmt_currency }}</td>
+                    <td>100%</td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+
     </div>
 
 </template>
@@ -72,6 +170,12 @@
                     aggregates: null,
                     group: null,
                     filter: null
+                },
+                treeMapTable: {
+                    show: true,
+                    sortAttr: '_percentage',
+                    sortDesc: true,
+                    data: null
                 }
             }
         },
@@ -151,16 +255,50 @@
                 // console.error("TREEMAP: Real thing here .. :P PACKAGEID: ", this.treemapid)
                 const treeMap = new TreeMapComponent()
                 const wrapper = document.querySelector(`div#treemap-${this.treemapid}`)
-                // Build and track events??
-                // Maybe assign it to a map; so can drill up and down; cached??
+
+                treeMap.on('dataLoaded', (treeMapComponent, root) => {
+                    this.treeMapTable.data = root
+                    // Below may not be needed as if data change it should be reactive above?
+                    // $scope.$apply();
+                })
+
+                treeMap.on('click', (treeMapComponent, item) => {
+                    // item has a whole bunch of stuff; make sure you pass on only the key!!
+                    this.$dispatch('babbage-click', item._key)
+                })
+
                 treeMap.build(this.endpoint, this.cube, this.state, wrapper)
-                // The signal will change the initstate which will trigger a rebuild
-                // should be a better way to reuse built items
-                treeMap.on('click', function (treeMapComponent, item) {
-                            // item has a whole bunch of stuff; make sure you pass on only the key!!
-                            this.$dispatch('babbage-click', item._key)
-                        }.bind(this)
-                )
+            },
+            invertSortTreeMapList: function (sort_attr) {
+                // DEBUG:
+                console.error("invertSortTreeMapList called!! sort_attr:", sort_attr)
+                console.error("BEFORE: ", util.inspect(this.treeMapTable))
+                this.treeMapTable.sortAttr = sort_attr
+                this.treeMapTable.sortDesc = !this.treeMapTable.sortDesc
+                console.error("AFTER: ", util.inspect(this.treeMapTable))
+            },
+            toggleTreeMapList: function () {
+                // DEBUG:
+                console.error("toggleTreeMapList called!!")
+                /*
+                 let treeMapTable = $scope.treeMapTable;
+                 let treeMapSection = $(".treemap-table");
+                 treeMapTable.show ? treeMapSection.fadeOut() : treeMapSection.fadeIn();
+                 treeMapTable.show = !treeMapTable.show;
+
+                 */
+                // Below has JQuery deps; to be removed ..
+                let treeMapSection = $(".treemap-table")
+                // TODO: Port and add some sort of "transition"?? For now port the JQuery fadeIn/fadeOut??
+                this.treeMapTable.show ? treeMapSection.fadeOut() : treeMapSection.fadeIn();
+                this.treeMapTable.show = !this.treeMapTable.show
+            },
+            selectTreeMapListRow: function (item) {
+                // DEBUG:
+                console.error("selectTreeMapListRow called!! item: ", util.inspect(item))
+                console.error("pass KEY %s to drillDown", item._key)
+                // this.$dispatch('babbage-click', item._key)
+
             },
             simulateDrillDown: function () {
                 // Triggered on click of each item??

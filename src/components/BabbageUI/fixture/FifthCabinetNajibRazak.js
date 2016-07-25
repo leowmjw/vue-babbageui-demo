@@ -1428,7 +1428,15 @@ export default {
                     "post_id": "55b75aed1527fde65b035d85",
                     "post_name": "Minister of Communications and Multimedia"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Komunikasi dan Multimedia 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kkm2015"
+                }, {
+                    "title": "Bajet Kementerian Komunikasi dan Multimedia 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kkm2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Education",
@@ -1458,7 +1466,15 @@ export default {
                     "post_id": "55b758e9222b329d5ce6228c",
                     "post_name": "Minister of Natural Resources and Environment"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Sumber Asli dan Alam Sekitar 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:ksaas2015"
+                }, {
+                    "title": "Bajet Kementerian Sumber Asli dan Alam Sekitar 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:ksaas2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Domestic Trade, Co-operatives and Consumerism",
@@ -1469,7 +1485,15 @@ export default {
                     "post_id": "55b757ac222b329d5ce5f8c9",
                     "post_name": "Minister of Domestic Trade, Co-operatives and Consumerism"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Perdagangan Dalam Negeri, Koperasi dan Kepenggunaan 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kpnkk2015"
+                }, {
+                    "title": "Bajet Kementerian Perdagangan Dalam Negeri, Koperasi dan Kepenggunaan 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kpnkk2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Urban Wellbeing, Housing and Local Government",
@@ -1507,7 +1531,15 @@ export default {
                     "post_id": "55b75601222b329d5ce5f26a",
                     "post_name": "Minister of Youth and Sports"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Belia dan Sukan 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kbs2015"
+                }, {
+                    "title": "Bajet Kementerian Belia dan Sukan 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kbs2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Higher Education",
@@ -1549,6 +1581,14 @@ export default {
                     "post_name": "Minister of Human Resources"
                 }],
                 "budgets": [{
+                    "title": "Bajet Kementerian Sumber Manusia 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:ksm2015"
+                }, {
+                    "title": "Bajet Kementerian Sumber Manusia 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:ksm2015_detailed"
+                }, {
                     "title": "Bajet Jabatan Perkhidmatan Awam 2015",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:jpa2015"
@@ -1617,7 +1657,15 @@ export default {
                     "post_id": "55b74e9bcf2b56b826ef1e5b",
                     "post_name": "Minister of Science, Technology and Innovation"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Sains, Teknologi dan Inovasi 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:ksti2015"
+                }, {
+                    "title": "Bajet Kementerian Sains, Teknologi dan Inovasi 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:ksti2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Rural and Regional Development",
@@ -1628,7 +1676,15 @@ export default {
                     "post_id": "55b74bf2cf2b56b826eef112",
                     "post_name": "Minister of Rural and Regional Development"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Kemajuan Luar Bandar dan Wilayah 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kklbw2015"
+                }, {
+                    "title": "Bajet Kementerian Kemajuan Luar Bandar dan Wilayah 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kklbw2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Finance",
@@ -1693,7 +1749,15 @@ export default {
                     "post_id": "55b746c369b3d48725950a7b",
                     "post_name": "Minister of Agriculture and Agro-Based Industry"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Pertanian dan Industri Asas Tani 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kpist2015"
+                }, {
+                    "title": "Bajet Kementerian Pertanian dan Industri Asas Tani 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kpist2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Plantation Industries and Commodities",
@@ -1704,7 +1768,15 @@ export default {
                     "post_id": "55b745d8c4705304262dc638",
                     "post_name": "Deputy Minister of Plantation Industries and Commodities"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Perusahaan Perladangan dan Komoditi 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kppk2015"
+                }, {
+                    "title": "Bajet Kementerian Perusahaan Perladangan dan Komoditi 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kppk2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Energy, Green Technology and Water",
@@ -1715,7 +1787,15 @@ export default {
                     "post_id": "55b733087070042c250b2fa3",
                     "post_name": "Minister of Energy, Green Technology and Water"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Tenaga, Teknologi Hijau dan Air 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kettha2015"
+                }, {
+                    "title": "Bajet Kementerian Tenaga, Teknologi Hijau dan Air 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kettha2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of International Trade and Industry",
@@ -1726,7 +1806,15 @@ export default {
                     "post_id": "55b7329669b3d4872594869c",
                     "post_name": "Minister of International Trade and Industry II"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Perdagangan Antarabangsa dan Industri 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kpai2015"
+                }, {
+                    "title": "Bajet Kementerian Perdagangan Antarabangsa dan Industri Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kpai2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Tourism and Culture",
@@ -1737,7 +1825,15 @@ export default {
                     "post_id": "55b7315e69b3d48725945370",
                     "post_name": "Minister of Tourism and Culture"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Pelancongan dan Kebudayaan 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kpk2015"
+                }, {
+                    "title": "Bajet Kementerian Pelancongan dan Kebudayaan 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kpk2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Foreign Affairs",
@@ -1767,7 +1863,15 @@ export default {
                     "post_id": "55b731b969b3d4872594537b",
                     "post_name": "Minister of Defense"
                 }],
-                "budgets": []
+                "budgets": [{
+                    "title": "Bajet Kementerian Pertahanan 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mod2015"
+                }, {
+                    "title": "Bajet Kementerian Pertahanan 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mod2015_detailed"
+                }]
             },
             {
                 "name": "Ministry of Health",

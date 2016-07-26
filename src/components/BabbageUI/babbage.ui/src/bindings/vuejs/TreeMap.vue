@@ -65,6 +65,18 @@
         color: #fff
     }
 
+    .treemap-list .treemap-table tfoot td {
+        font-weight: bolder
+    }
+
+    .treemap-list .treemap-table .colorbox {
+        height: 1em;
+        width: 1em;
+        display: inline-block;
+        margin-right: .5em;
+        vertical-align: middle
+    }
+
 </style>
 
 <template>
@@ -110,7 +122,7 @@
                         </a>
                     </th>
                     <th>
-                        <a href="javascript:;" ng-click="invertSortTreeMapList('value')">
+                        <a href="javascript:;" @click="invertSortTreeMapList('value')">
                             amount
                             <span v-show="treeMapTable.sortAttr == 'value'" class="fa"
                                   :class="treeMapTable.sortDesc ? 'fa-caret-up' : 'fa-caret-down'">x</span>
@@ -135,17 +147,10 @@
                 </template>
                 <template v-else>
                     <tbody>
-                    <!--
-                         Try to figure out how to port the filter below; for now leave as is unsorted/natural sort
-                         <tr v-for="item of treeMapTable.data.children | orderBy:treeMapTable.sortAttr:treeMapTable.sortDesc"
-                    -->
-                    <tr v-for="item of treeMapTable.data.children"
+                    <tr v-for="item of treeMapTable.data.children | orderBy treeMapTable.sortAttr treeMapTable.sortDesc"
                         class="datarow" @click="selectTreeMapListRow(item)">
                         <td>
-                            <!-- Figure out how to port the style; leave as plain for now ...
-                            <span class="colorbox" ng-style="{'background-color':item._color}"></span>
-                            -->
-                            <span class="colorbox"></span>
+                            <span class="colorbox" :style="{'background-color':item._color}"></span>
                             {{ item._name }}
                         </td>
                         <td>{{ item._area_fmt_currency }}</td>
@@ -188,7 +193,7 @@
                 treeMapTable: {
                     show: true,
                     sortAttr: '_percentage',
-                    sortDesc: true,
+                    sortDesc: 1,
                     data: null
                 }
             }
@@ -287,10 +292,16 @@
             },
             invertSortTreeMapList: function (sort_attr) {
                 // DEBUG:
-                console.error("invertSortTreeMapList called!! sort_attr:", sort_attr)
-                console.error("BEFORE: ", util.inspect(this.treeMapTable.sortDesc, {depth: 10}))
+                // console.error("invertSortTreeMapList called!! sort_attr:", sort_attr)
+                // console.error("BEFORE: ", util.inspect(this.treeMapTable.sortDesc, {depth: 10}))
                 this.treeMapTable.sortAttr = sort_attr
-                this.treeMapTable.sortDesc = !this.treeMapTable.sortDesc
+                // See: https://vuejs.org/api/#orderBy
+                // order >= 0 asc, order < 0 desc
+                if (this.treeMapTable.sortDesc >= 0) {
+                    this.treeMapTable.sortDesc = -1
+                } else {
+                    this.treeMapTable.sortDesc = 1
+                }
                 console.error("ATTR: %s DIRECT: %s ", this.treeMapTable.sortAttr, util.inspect(this.treeMapTable.sortDesc, {depth: 10}))
             },
             toggleTreeMapList: function () {

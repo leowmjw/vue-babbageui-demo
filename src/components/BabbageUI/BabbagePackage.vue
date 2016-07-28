@@ -14,7 +14,16 @@
 <template>
 
     <div class="col-md-12 well x-visualization-container">
+        <a href="javascript:;" @click="toggleSubComponent('treemap')" v-show="components.treemap_show">
+            <span class="">^</span>
+            Hide TreeMap
+        </a>
+        <a href="javascript:;" @click="toggleSubComponent('treemap')" v-show="!components.treemap_show">
+            <span class="">v</span>
+            Show TreeMap
+        </a>
         <treemap
+                v-show="components.treemap_show"
                 :treemapid="packageid"
                 :cube="cube"
                 :endpoint="endpoint"
@@ -22,14 +31,32 @@
     </div>
 
     <div class="col-md-8 well x-visualization-container">
+        <a href="javascript:;" @click="toggleSubComponent('bubbletree')" v-show="components.bubbletree_show">
+            <span class="">^</span>
+            Hide BubbleTree
+        </a>
+        <a href="javascript:;" @click="toggleSubComponent('bubbletree')" v-show="!components.bubbletree_show">
+            <span class="">v</span>
+            Show BubbleTree
+        </a>
         <bubbletree
+                v-show="components.bubbletree_show"
                 :bubbletreeid="packageid"
                 :cube="cube"
                 :endpoint="endpoint"
         ></bubbletree>
     </div>
     <div class="col-md-4 well x-visualization-container">
+        <a href="javascript:;" @click="toggleSubComponent('pie')" v-show="components.pie_show">
+            <span class="">^</span>
+            Hide Pie
+        </a>
+        <a href="javascript:;" @click="toggleSubComponent('pie')" v-show="!components.pie_show">
+            <span class="">v</span>
+            Show Pie
+        </a>
         <pie
+                v-show="components.pie_show"
                 :pieid="packageid"
                 :cube="cube"
                 :endpoint="endpoint"
@@ -88,6 +115,11 @@
                     group: null,
                     filter: [],
                     drillDown: null
+                },
+                components: {
+                    treemap_show: true,
+                    bubbletree_show: true,
+                    pie_show: true
                 }
             }
         },
@@ -246,6 +278,25 @@
                 // changes state.flag.renderingCharts
                 // Promise within promise ??
                 // Requeueing as per: http://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful
+            },
+            toggleSubComponent: function(component) {
+                switch (component) {
+                    case 'treemap':
+                        this.components.treemap_show = !this.components.treemap_show
+                        break
+                    case 'bubbletree':
+                        this.components.bubbletree_show = !this.components.bubbletree_show
+                        break
+                    case 'pie':
+                        this.components.pie_show = !this.components.pie_show
+                        break
+                    default:
+                        // Reset??
+                        this.components.treemap_show = true
+                        this.components.bubbletree_show = true
+                        this.components.pie_show = true
+                        break
+                }
             }
 
         },

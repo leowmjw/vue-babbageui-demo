@@ -219,7 +219,6 @@
         text-decoration: none !important
     }
 
-
 </style>
 
 <template>

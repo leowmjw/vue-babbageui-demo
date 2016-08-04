@@ -103,11 +103,11 @@
         <div class="treemap-list">
             <div class="treemap-table-bar">
                 <a href="javascript:;" @click="toggleTreeMapList()" v-show="treeMapTable.show">
-                    <span class="fa fa-caret-up">^</span>
+                    <span class="fa fa-caret-up">&nbsp;&nbsp;&nbsp;</span>
                     Hide list
                 </a>
                 <a href="javascript:;" @click="toggleTreeMapList()" v-show="!treeMapTable.show">
-                    <span class="fa fa-caret-down">v</span>
+                    <span class="fa fa-caret-down">&nbsp;&nbsp;&nbsp;</span>
                     Show list
                 </a>
             </div>
@@ -118,21 +118,27 @@
                         <a href="javascript:;" @click="invertSortTreeMapList('_name')">
                             title
                             <span v-show="treeMapTable.sortAttr == '_name'" class="fa"
-                                  :class="treeMapTable.sortDesc ? 'fa-caret-up' : 'fa-caret-down'">x</span>
+                                  :class="(treeMapTable.sortDesc >= 0) ? 'fa-caret-up' : 'fa-caret-down'">
+                                &nbsp;&nbsp;&nbsp;
+                            </span>
                         </a>
                     </th>
                     <th>
                         <a href="javascript:;" @click="invertSortTreeMapList('value')">
                             amount
                             <span v-show="treeMapTable.sortAttr == 'value'" class="fa"
-                                  :class="treeMapTable.sortDesc ? 'fa-caret-up' : 'fa-caret-down'">x</span>
+                                  :class="(treeMapTable.sortDesc >= 0) ? 'fa-caret-up' : 'fa-caret-down'">
+                                 &nbsp;&nbsp;&nbsp;
+                            </span>
                         </a>
                     </th>
                     <th>
                         <a href="javascript:;" @click="invertSortTreeMapList('_percentage')">
                             share
                             <span v-show="treeMapTable.sortAttr == '_percentage'" class="fa"
-                                  :class="treeMapTable.sortDesc ? 'fa-caret-up' : 'fa-caret-down'">x</span>
+                                  :class="(treeMapTable.sortDesc >= 0) ? 'fa-caret-up' : 'fa-caret-down'">
+                                 &nbsp;&nbsp;&nbsp;
+                            </span>
                         </a>
                     </th>
                 </tr>
@@ -302,7 +308,8 @@
                 } else {
                     this.treeMapTable.sortDesc = 1
                 }
-                console.error("ATTR: %s DIRECT: %s ", this.treeMapTable.sortAttr, util.inspect(this.treeMapTable.sortDesc, {depth: 10}))
+                // DEBUG:
+                // console.error("ATTR: %s DIRECT: %s ", this.treeMapTable.sortAttr, util.inspect(this.treeMapTable.sortDesc, {depth: 10}))
             },
             toggleTreeMapList: function () {
                 // DEBUG:

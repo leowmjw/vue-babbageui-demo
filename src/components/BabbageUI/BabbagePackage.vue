@@ -1,4 +1,4 @@
-<style scoped>
+<style>
 
     .x-visualization-add, .x-visualization-container.well {
         background: #fff;
@@ -9,17 +9,33 @@
         min-height: 0
     }
 
+    /* Awesome Font; like arrows */
+
+    .fa {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .fa-caret-up {
+        background-image: url("/assets/icons/arrow_up_fa.svg");
+    }
+
+    .fa-caret-down {
+        background-image: url("/assets/icons/arrow_down_fa.svg");
+    }
+
 </style>
 
 <template>
 
     <div class="col-md-12 well x-visualization-container">
         <a href="javascript:;" @click="toggleSubComponent('treemap')" v-show="components.treemap_show">
-            <span class="">^</span>
+            <span class="fa fa-caret-up">&nbsp;&nbsp;&nbsp;</span>
             Hide TreeMap
         </a>
         <a href="javascript:;" @click="toggleSubComponent('treemap')" v-show="!components.treemap_show">
-            <span class="">v</span>
+            <span class="fa fa-caret-down">&nbsp;&nbsp;&nbsp;</span>
             Show TreeMap
         </a>
         <treemap
@@ -32,11 +48,11 @@
 
     <div class="col-md-8 well x-visualization-container">
         <a href="javascript:;" @click="toggleSubComponent('bubbletree')" v-show="components.bubbletree_show">
-            <span class="">^</span>
+            <span class="fa fa-caret-up">&nbsp;&nbsp;&nbsp;</span>
             Hide BubbleTree
         </a>
         <a href="javascript:;" @click="toggleSubComponent('bubbletree')" v-show="!components.bubbletree_show">
-            <span class="">v</span>
+            <span class="fa fa-caret-down">&nbsp;&nbsp;&nbsp;</span>
             Show BubbleTree
         </a>
         <bubbletree
@@ -48,11 +64,11 @@
     </div>
     <div class="col-md-4 well x-visualization-container">
         <a href="javascript:;" @click="toggleSubComponent('pie')" v-show="components.pie_show">
-            <span class="">^</span>
+            <span class="fa fa-caret-up">&nbsp;&nbsp;&nbsp;</span>
             Hide Pie
         </a>
         <a href="javascript:;" @click="toggleSubComponent('pie')" v-show="!components.pie_show">
-            <span class="">v</span>
+            <span class="fa fa-caret-down">&nbsp;&nbsp;&nbsp;</span>
             Show Pie
         </a>
         <pie

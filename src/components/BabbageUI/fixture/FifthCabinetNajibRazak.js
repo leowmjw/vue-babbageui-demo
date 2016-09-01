@@ -1539,6 +1539,14 @@ export default {
                     "title": "Bajet Kementerian Belia dan Sukan 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:kbs2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Belia dan Sukan 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kbs2016"
+                }, {
+                    "title": "Bajet Kementerian Belia dan Sukan 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kbs2016_detailed"
                 }]
             },
             {

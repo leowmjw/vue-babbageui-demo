@@ -202,9 +202,16 @@
                         // TODO: What is ES6 way to make this more robust when it does not fit the exception??
                         chosen_hierarchy = hierarchies[key].levels[0]
                         // console.log("Default Selection: ", util.inspect(chosen_dimension, {depth: 10}))
-                        this.state.hierarchies.current = chosen_hierarchy
-                        break
+                        // If ref of type date; try to continue ...
+                        if (hierarchies[key].ref == "date") {
+                            // DEBUG:
+                            // console.log("Hit DATE; try to continue ...")
+                        } else {
+                            break
+                        }
                     }
+                    // Set the current hierarchy to the final chosen one from the loop
+                    this.state.hierarchies.current = chosen_hierarchy
 
                     // Select first item from measures == save to ==> initstate.aggregates
                     this.state.measures.current = measures[0].key
@@ -295,7 +302,7 @@
                 // Promise within promise ??
                 // Requeueing as per: http://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful
             },
-            toggleSubComponent: function(component) {
+            toggleSubComponent: function (component) {
                 switch (component) {
                     case 'treemap':
                         this.components.treemap_show = !this.components.treemap_show

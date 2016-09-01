@@ -7,10 +7,79 @@ import util from 'util'
 // Component under test
 import FixtureRepo from './components/BabbageUI/Model'
 import PopItPostRepo from './components/RelatedMinistriesInfo/Model'
+import BabbagePackageRepo from './components/BabbageUI/BabbagePackage/Model'
 
 // scenario_test_fixture_fifth_cabinet_najib_razak()
 // scenario_test_get_post_details_from_ministry()
-scenario_test_various_filters()
+// scenario_test_various_filters()
+scenario_test_hierarchy_avoid_date.call({
+    cube: "23cdc48554ae8648deff7837c025d8c0:kbs2016_detailed",
+    endpoint: "http://next.openspending.org/api/3",
+    state: {
+        hierarchies: {
+            items: null
+        },
+        measures: {
+            items: null
+        },
+        dimensions: {
+            items: null
+        }
+    }
+})
+
+function scenario_test_hierarchy_avoid_date() {
+    // Simulate somewhat the ready() state of the BabbagePackage ..
+    const mypro = BabbagePackageRepo.buildState({cube: this.cube, endpoint: this.endpoint}, {})
+
+    const o = Promise.all(mypro)
+    o.then(
+        function (values) {
+            // DEBUG:
+            // console.error("ALL:", util.inspect(values, {depth: 10}))
+            // Attach to the items; use spread method ..
+            let [ hierarchies, measures, dimensions ]  =  values
+            // console.error("ORIG_HIERARCHIES:", util.inspect(Object.assign({}, hierarchies), {depth: 10}))
+            this.state.hierarchies.items = hierarchies
+            // console.error("HIERARCHIES:", util.inspect(this.state.hierarchies.items, {depth: 10}))
+            this.state.measures.items = measures
+            // console.error("MEASURES:", util.inspect(this.state.measures.items, {depth: 10}))
+            this.state.dimensions.items = dimensions
+            // console.error("DIMENSIONS:", util.inspect(this.state.dimensions.items, {depth: 10}))
+            // If any default "params" is passed in via the props; chooseStateParams will use it
+            chooseStateParams.call(this)
+            console.log("SCENARIO: SYNTHETIC *********************************")
+            // OK above test real item; now below test synthetic with only Date item ..
+            this.state.hierarchies.items = { date: { label: 'Date', levels: [ 'date_2' ], ref: 'date' } }
+            chooseStateParams.call(this)
+
+        }.bind(this)
+    ).catch(
+        function (err) {
+            console.error("ERR:", util.inspect(err))
+        }
+    )
+
+    function chooseStateParams(defaultParams) {
+        console.error("HIERARCHIES:", util.inspect(this.state.hierarchies.items, {depth: 10}))
+        const hierarchies = this.state.hierarchies.items
+        // Still choose type Date if no other options ..
+        let chosen_hierarchy
+        for (let key of Object.keys(hierarchies)) {
+            // TODO: What is ES6 way to make this more robust when it does not fit the exception??
+            chosen_hierarchy = hierarchies[key].levels[0]
+            console.log("CHOSEN:", chosen_hierarchy)
+            // console.log("Default Selection: ", util.inspect(chosen_dimension, {depth: 10}))
+            // If ref of type date; try to continue ...
+            if (hierarchies[key].ref == "date") {
+                console.log("Hit DATE; try to continue ...")
+            } else {
+                break
+            }
+        }
+        console.log("FINAL_HIER:" , chosen_hierarchy)
+    }
+}
 
 function scenario_test_various_filters() {
     const filter1 = "1.1"

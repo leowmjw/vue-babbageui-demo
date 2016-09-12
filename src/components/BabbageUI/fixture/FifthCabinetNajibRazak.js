@@ -1455,6 +1455,14 @@ export default {
                     "title": "Bajet Kementerian Pendidikan 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:moe2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Pendidikan 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:moe2016"
+                }, {
+                    "title": "Bajet Kementerian Pendidikan 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:moe2016_detailed"
                 }]
             },
             {
@@ -1566,6 +1574,14 @@ export default {
                     "title": "Bajet Kementerian Pendidikan Tinggi 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:mohe2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Pendidikan Tinggi 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mohe2016"
+                }, {
+                    "title": "Bajet Kementerian Pendidikan Tinggi 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mohe2016_detailed"
                 }]
             },
             {
@@ -1604,6 +1620,22 @@ export default {
                     "title": "Bajet Jabatan Perkhidmatan Awam 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:jpa2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Sumber Manusia 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:ksm2016"
+                }, {
+                    "title": "Bajet Kementerian Sumber Manusia 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:ksm2016_detailed"
+                }, {
+                    "title": "Bajet Jabatan Perkhidmatan Awam 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:jpa2016"
+                }, {
+                    "title": "Bajet Jabatan Perkhidmatan Awam 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:jpa2016_detailed"
                 }]
             },
             {
@@ -1627,6 +1659,14 @@ export default {
                     "title": "Bajet Kementerian Kerja Raya 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:kkr2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Kerja Raya 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kkr2016"
+                }, {
+                    "title": "Bajet Kementerian Kerja Raya 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kkr2016_detailed"
                 }]
             },
             {
@@ -1692,6 +1732,14 @@ export default {
                     "title": "Bajet Kementerian Kemajuan Luar Bandar dan Wilayah 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:kklbw2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Kemajuan Luar Bandar dan Wilayah 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kklbw2016"
+                }, {
+                    "title": "Bajet Kementerian Kemajuan Luar Bandar dan Wilayah 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kklbw2016_detailed"
                 }]
             },
             {
@@ -1723,6 +1771,30 @@ export default {
                     "title": "Bajet Kementerian Kewangan Perkhidmatan Am Perbendaharaan 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:mof2_2015detailed"
+                }, {
+                    "title": "Bajet Simpanan Luar Jangkaan 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:slj2015"
+                }, {
+                    "title": "Bajet Kementerian Kewangan Perbendaharaan 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof1_2016"
+                }, {
+                    "title": "Bajet Kementerian Kewangan Perbendaharaan 2016 Secara Terperinci ",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof1_2016detailed"
+                }, {
+                    "title": "Bajet Kementerian Kewangan Peruntukan Kepada Kumpulan Wang Terkanun 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof3_2016detailed"
+                }, {
+                    "title": "Bajet Kementerian Kewangan Perkhidmatan Am Perbendaharaan 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof2_2016"
+                }, {
+                    "title": "Bajet Kementerian Kewangan Perkhidmatan Am Perbendaharaan 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mof2_2016detailed"
                 }]
             },
             {
@@ -1746,6 +1818,14 @@ export default {
                     "title": "Bajet Kementerian Dalam Negeri 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:kdn2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Dalam Negeri 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kdn2016"
+                }, {
+                    "title": "Bajet Kementerian Dalam Negeri 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kdn2016_detailed"
                 }]
             },
             {
@@ -1860,6 +1940,14 @@ export default {
                     "title": "Bajet Kementerian Luar Negeri 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:kln2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Luar Negeri 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kln2016"
+                }, {
+                    "title": "Bajet Kementerian Luar Negeri 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kln2015_detailed"
                 }]
             },
             {
@@ -1879,6 +1967,14 @@ export default {
                     "title": "Bajet Kementerian Pertahanan 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:mod2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Pertahanan 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mod2016"
+                }, {
+                    "title": "Bajet Kementerian Pertahanan 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:mod2016_detailed"
                 }]
             },
             {
@@ -1925,6 +2021,14 @@ export default {
                     "title": "Bajet Kementerian Pengangkutan 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:kp2015_detailed"
+                }, {
+                    "title": "Bajet Kementerian Pengangkutan 2016",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kp2016"
+                }, {
+                    "title": "Bajet Kementerian Pengangkutan 2016 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:kp2016_detailed"
                 }]
             },
             {
@@ -1948,6 +2052,54 @@ export default {
                     "title": "Bajet Jabatan Perdana Menteri 2015 Secara Terperinci",
                     "label": "",
                     "cube": "23cdc48554ae8648deff7837c025d8c0:jpm2015_detailed"
+                }, {
+                    "title": "Bajet Jabatan Audit Negara 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:jan2015"
+                }, {
+                    "title": "Bajet Jabatan Audit Negara 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:jan2015_detailed"
+                }, {
+                    "title": "Bajet Jabatan Peguam Negara 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:jpn2015"
+                }, {
+                    "title": "Bajet Jabatan Peguam Negara 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:jpn2015_detailed"
+                }, {
+                    "title": "Bajet Suruhanjaya Pilihanraya 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:sp2015"
+                }, {
+                    "title": "Bajet Suruhanjaya Pilihanraya 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:sp2015_detailed"
+                }, {
+                    "title": "Bajet Suruhanjaya Pencegah Rasuah Malaysia 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:sprm2015"
+                }, {
+                    "title": "Bajet Suruhanjaya Pencegah Rasuah Malaysia 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:sprm2015_detailed"
+                }, {
+                    "title": "Bajet Suruhanjaya Perkhidmatan Pelajaran 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:spp2015"
+                }, {
+                    "title": "Bajet Suruhanjaya Perkhidmatan Pelajaran 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:spp2015_detailed"
+                }, {
+                    "title": "Bajet Suruhanjaya Perkhidmatan Awam 2015",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:spa2015"
+                }, {
+                    "title": "Bajet Suruhanjaya Perkhidmatan Awam 2015 Secara Terperinci",
+                    "label": "",
+                    "cube": "23cdc48554ae8648deff7837c025d8c0:spa2015_detailed"
                 }, {
                     "title": "Bajet Jabatan Perdana Menteri 2016",
                     "label": "",
